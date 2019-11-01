@@ -1,0 +1,21 @@
+eureka: 
+   instance: 
+      #表示主机名称
+      hostname: localhost
+   client: 
+      #表示是否注册到服务器   因为本身就是eureka注册中心了   所以不需要注册了
+      registerWithEureka: false
+      #表示是否获取服务器的注册中心   同理   本身就是eureka注册中心了   所以不需要获取
+      fetchRegistry: false
+      #自己作为服务器  公布出来的地址
+      #后续某个微服务要把自己注册到eureka  server    就要使用这个地址  http://localhost:8761/eureka
+      serviceUrl: 
+         defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#   server: 
+#      enableSelfPreservation: false
+         
+spring: 
+   application: 
+      #这个微服务本身的名称是eureka-server
+      name: eureka-server
+      
