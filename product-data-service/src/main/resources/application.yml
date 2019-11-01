@@ -1,0 +1,15 @@
+#server: 
+#   port:因为会启动多个product-data-service  所以端口号由用户自动设置  8001 8002 8003
+
+#设置微服务的名称：product-data-service
+spring: 
+   application: 
+      name: product-data-service
+   #服务链路追踪
+   zipkin: 
+      base-url: http://localhost:9411
+#设置注册中心的地址   http://localhost:8761/eureka/  与eureka-server中的配置application.yml  呼应
+eureka: 
+   client: 
+      serviceUrl: 
+         defaultZone: http://localhost:8761/eureka/
