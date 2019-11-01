@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	table{
+		border-collapse: collapse;
+		width:400px;
+		margin:20px auto;
+	}
+	td,th{
+		border: 1px solid gray;
+	}
+</style>
+</head>
+<body>
+	<div class="workingArea">
+		<table>
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>产品</th>
+					<th>价格</th>
+				</tr>	
+			</thead>
+			<tbody>
+				<tr th:each="p: ${ps}">
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.name}"></td>
+					<td th:text="${p.price}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
