@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import cn.how2j.myrule.MySelfRule;
 import cn.how2j.springcloud.pojo.Product;
 
 
@@ -13,7 +14,7 @@ import cn.how2j.springcloud.pojo.Product;
 //这里只是指定了要访问的微服务名称  并没有指定端口号8001   或者    8002
 //@FeignClient(value = "PRODUCT-DATA-SERVICE")
 //支持断路器之后注解
-@FeignClient(value = "PRODUCT-DATA-SERVICE",fallback = ProductClientFeignHystrix.class)
+@FeignClient(value = "PRODUCT-DATA-SERVICE", configuration = MySelfRule.class, fallback = ProductClientFeignHystrix.class)
 public interface ProductClientFeign {
 	
 	

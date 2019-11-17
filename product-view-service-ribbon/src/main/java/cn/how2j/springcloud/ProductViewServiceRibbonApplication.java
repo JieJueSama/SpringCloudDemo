@@ -29,45 +29,41 @@ import cn.hutool.core.util.NumberUtil;
 //表示用于发现eureka注册中心的微服务
 @EnableDiscoveryClient
 //在启动该微服务的时候能去加载自定义的的Ribbon配置类
-@RibbonClient(name="PRODUCT-DATA-SERVICE", configuration=MySelfRule.class)
+@RibbonClient(name = "PRODUCT-DATA-SERVICE", configuration = MySelfRule.class)
 public class ProductViewServiceRibbonApplication {
-	
+
 	public static void main(String[] args) {
 		int port = 0;
 		int defaultPort = 8010;
-		Future<Integer> future = ThreadUtil.execAsync(()->{
+		Future<Integer> future = ThreadUtil.execAsync(() -> {
 			int p = 0;
 			System.out.println("请于5秒钟内输入端口号， 推荐使用8010  超过5秒后默认使用 " + defaultPort);
 			Scanner scanner = new Scanner(System.in);
-			while(true) {
+			while (true) {
 				String strPort = scanner.nextLine();
-				if(!NumberUtil.isInteger(strPort)) {
+				if (!NumberUtil.isInteger(strPort)) {
 					System.err.println("只能是数字");
-				}
-				else {
+				} else {
 					p = Convert.toInt(strPort);
 					scanner.close();
 					break;
 				}
 			}
-			
+
 			return p;
 		});
-		
+
 		try {
 			port = future.get(5, TimeUnit.SECONDS);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			port = defaultPort;
 		}
-		if(!NetUtil.isUsableLocalPort(port)) {
+		if (!NetUtil.isUsableLocalPort(port)) {
 			System.err.printf("端口%d被占用，无法启动%n", port);
 			System.exit(1);
 		}
-		new SpringApplicationBuilder(ProductViewServiceRibbonApplication.class).properties("server.port="+port).run(args);
+		new SpringApplicationBuilder(ProductViewServiceRibbonApplication.class).properties("server.port=" + port)
+				.run(args);
 	}
-	
-	
-	
-
 
 }
