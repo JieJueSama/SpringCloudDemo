@@ -9,9 +9,16 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RandomRule;
+import com.netflix.loadbalancer.RetryRule;
+import com.netflix.loadbalancer.RoundRobinRule;
+
+import cn.how2j.myrule.MySelfRule;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.NetUtil;
@@ -21,6 +28,8 @@ import cn.hutool.core.util.NumberUtil;
 @EnableEurekaClient
 //表示用于发现eureka注册中心的微服务
 @EnableDiscoveryClient
+//在启动该微服务的时候能去加载自定义的的Ribbon配置类
+@RibbonClient(name="PRODUCT-DATA-SERVICE", configuration=MySelfRule.class)
 public class ProductViewServiceRibbonApplication {
 	
 	public static void main(String[] args) {
@@ -58,11 +67,7 @@ public class ProductViewServiceRibbonApplication {
 	}
 	
 	
-	//用restTemplate这个工具做负载均衡
-	@Bean
-	@LoadBalanced
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+	
+
 
 }
