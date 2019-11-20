@@ -13,3 +13,6 @@ zuul:
     api-b:
       path: /api-view/**
       serviceId: PRODUCT-VIEW-SERVICE-FEIGN
+    api-c: 
+      path: /api-ribbon/**
+      serviceId: product-view-service-ribbon

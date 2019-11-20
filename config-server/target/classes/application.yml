@@ -8,7 +8,7 @@ spring:
          server: 
             git: 
                #git地址
-               uri: https://github.com/JieJueSama/springcloudConfig/
+               uri: https://github.com/JieJueSama/springcloudConfig
                searchPaths: respo
 eureka: 
    client: 

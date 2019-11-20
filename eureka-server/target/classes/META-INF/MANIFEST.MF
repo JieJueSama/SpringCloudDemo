@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: eurekaServer
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Administrator
+Built-By: dn9
 Implementation-Vendor-Id: cn.how2j.springcloud
-Build-Jdk: 1.8.0_65
+Build-Jdk: 1.8.0_131
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/springcloud/eurekaServer
 Created-By: Maven Integration for Eclipse
