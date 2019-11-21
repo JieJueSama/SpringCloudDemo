@@ -6,6 +6,7 @@ spring:
   application:
     name: product-service-zuul
 zuul:
+  ignored-services: '*'
   routes:
     api-a:
       path: /api-data/**

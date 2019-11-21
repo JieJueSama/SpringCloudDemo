@@ -1,6 +1,7 @@
 package cn.how2j.springcloud.client;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
